@@ -4,13 +4,24 @@
  */
 package LeoValdiviaSuasnabar.ExamenFinal.Model;
 
-import jakarta.persistence.*;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "mascotas")
 public class mascotas {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
+   private Long id;
+ 
    private String nombre;
    private String tipo;
    private String raza;
@@ -95,6 +106,15 @@ public class mascotas {
     public void setNombreDoctorAsginado(String nombreDoctorAsginado) {
         this.nombreDoctorAsginado = nombreDoctorAsginado;
     }
+
+      public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
 
     public enum EstadoMascota {
         Bueno,
