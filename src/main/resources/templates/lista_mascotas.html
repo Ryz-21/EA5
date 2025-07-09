@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de mascotas</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Listado de mascotas</h2>
+    <div class="mb-3">
+        <a href="/veterinaria/nueva" class="btn btn-success">Nueva mascota</a>
+        <a href="/veterinaria/exportar/pdf" class="btn btn-danger">Exportar a PDF</a>
+        <a href="/veterinaria/exportar/excel" class="btn btn-primary">Exportar a Excel</a>
+    </div>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo</th>
+                <th>Raza</th>
+                <th>Edad</th>
+                <th>Sexo</th>
+                <th>Nombre Dueño</th>
+                <th>Teléfono Dueño</th>
+                <th>Doctor Asignado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="mascota : ${mascotas}">
+                <td th:text="${mascota.nombre}"></td>
+                <td th:text="${mascota.tipo}"></td>
+                <td th:text="${mascota.raza}"></td>
+                <td th:text="${mascota.edad}"></td>
+                <td th:text="${mascota.sexo}"></td>
+                <td th:text="${mascota.nombre_dueño}"></td>
+                <td th:text="${mascota.telefono_dueño}"></td>
+                <td th:text="${mascota.nombreDoctorAsginado}"></td>
+                <td>
+                    <a th:href="@{/veterinaria/editar/{id}(id=${mascota.id})}" class="btn btn-warning btn-sm">Editar</a>
+                    <a th:href="@{/veterinaria/eliminar/{id}(id=${mascota.id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que quieres eliminar esta mascota?');">Eliminar</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
